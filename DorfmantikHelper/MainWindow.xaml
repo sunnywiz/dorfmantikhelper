@@ -5,23 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DorfmantikHelper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="DorfmantikHelper" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <DockPanel >
-            <TextBlock DockPanel.Dock="Top"  TextWrapping="Wrap">Keep track of available spaces here, the hard ones.  Use . for a empty spot. One per line.  Comment after #.  For example, PPWWC.  
+            <TextBlock Margin="5" DockPanel.Dock="Top"  TextWrapping="Wrap">
+                Keep track of available spaces here, the hard ones.  Use . for a empty spot. One per line.  Additional notes after the definition.  For example, ppwwc.  
                 <LineBreak/>
-                P)lain W)ood C)ity F)ield R)iver T)rain</TextBlock>
-            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Name="AvailableText"/>
+                p)lain w)ood c)ity f)ield r)iver t)rain
+                <LineBreak/>
+                Special:  L = Lake (matches Lake, river and plain)
+            </TextBlock>
+            <TextBox Margin="5" TextWrapping="Wrap" AcceptsReturn="True" Name="AvailableText"/>
         </DockPanel>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5">
             <TextBlock>Enter what to search for - enter all 6 sides</TextBlock>
-            <TextBox Name="SearchForText" TextChanged="SearchForText_TextChanged"/>
+            <TextBox Margin="5" Name="SearchForText" TextChanged="SearchForText_TextChanged"/>
             <TextBlock>Results:</TextBlock>
-            <TextBox Name="ResultsText" MinHeight="300"/>
+            <TextBox Margin="5" Name="ResultsText" MinHeight="300"/>
         </StackPanel>
     </Grid>
 </Window>

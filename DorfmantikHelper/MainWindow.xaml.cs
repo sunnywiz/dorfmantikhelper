@@ -35,6 +35,7 @@ namespace DorfmantikHelper
                 ResultsText.Text = "need 6 chars to continue";
                 return;
             }
+            var thisTile = new DorfTile(SearchForText.Text); 
             var lines = AvailableText.Text.Split(Environment.NewLine);
             int lineNo = 0;
             for (; lineNo < lines.Length; lineNo++)
@@ -42,15 +43,11 @@ namespace DorfmantikHelper
                 string? line = lines[lineNo];
                 if (line.Length >= 6)
                 {
-                    var firstSix = line.Substring(0, 6); 
-                    var searchFor = SearchForText.Text;
-                    for (int perm = 0; perm < 6; perm++)
+                    var dorfTile = new DorfTile(line);
+                    if (thisTile.Match(dorfTile))
                     {
-                        if (Regex.IsMatch(searchFor, firstSix))
-                        {
-                            results.AppendLine($"Line: {lineNo+1} {line} matches permutation {searchFor}");
-                        }
-                        searchFor = searchFor.Substring(1) + searchFor.Substring(0, 1);
+
+                        results.AppendLine($"Line: {lineNo + 1} {line} matches permutation {SearchForText.Text}");
                     }
                 }
             }
